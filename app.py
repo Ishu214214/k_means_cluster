@@ -3,16 +3,16 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 
 
-application = Flask(__name__)
+app = Flask(__name__)
 model = pickle.load(open('kmeanscluster.pkl','rb'))   
 
 
-@application.route('/')
+@app.route('/')
 def home():
   
     return render_template("untitled.html")
   
-@application.route('/predict',methods=['GET'])
+@app.route('/predict',methods=['GET'])
 def predict():
   '''
   For rendering results on HTML GUI
@@ -40,4 +40,4 @@ def predict():
 
 if __name__ == '__main__':
  #app.run()
-  application.run(host="0.0.0.0",port=8080)
+  app.run(host="0.0.0.0",port=8080)
